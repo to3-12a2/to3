@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pokemon × Group 3 — Full Page</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --red:#dd5454;
+    --green:#6fbff5;
+    --btn-yellow:#ffcc00;
+    --screen-padding:18px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: "Press Start 2P", sans-serif;
+    background:#000;
+  }
+
+  /* ==============================
+        HERO BACKGROUND 
+     ============================== */
+  html,body{height:100%;}
+
+  .hero{position:relative;height:100vh;overflow:hidden;}
+
+  .bg-media{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 50%;
+    z-index:0;
+    transition:opacity 1s ease-in-out;
+  }
+
+  .bg-slideshow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .bg-slideshow.active{
+    opacity:1;
+    visibility:visible;
+  }
+
+  .slideshow-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 50%;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
+  }
+  .slideshow-image.active{
+    opacity:1;
+  }
+
+  .bg-video{
+    visibility:hidden;
+    opacity:0;
+  }
+
+  .overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    z-index:1;
+  }
+
+  /* ==============================
+             TOP BANNER
+     ============================== */
+  .top-banner{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(255, 43, 43, 0.5);
+    border-bottom:2px solid #000;
+    border-radius:0;
+    padding:18px var(--screen-padding);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    z-index:5;
+    height: 180px;
+  }
+
+  .title-row{
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+
+  .title-row img.logo{
+    height:64px;
+    image-rendering:pixelated;
+  }
+
+  .title-row .x{ font-size:28px; color:#000; }
+  .title-row .group{ font-size:26px; color:var(--green); }
+
+  .pokemon-row{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-top:-4px;
+  }
+
+  .pokemon-row img{
+    height:56px;
+    image-rendering:pixelated;
+  }
+
+  .banner-buttons{
+    display:flex;
+    gap:18px;
+    margin-top:6px;
+  }
+
+  .pixel-btn{
+    padding:10px 18px;
+    background:var(--btn-yellow);
+    border:4px solid #000;
+    cursor:pointer;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+    font-size:12px;
+  }
+
+  .pixel-btn:active{
+    transform:translate(4px,4px);
+    box-shadow:none;
+  }
+
+  @media (max-width:800px){
+    .title-row{ gap:10px; }
+    .pokemon-row img{ height:44px }
+    .title-row img.logo{ height:50px }
+  }
+</style>
+</head>
+
+<body>
+
+<main class="hero">
+
+  <!-- ==============================
+          BACKGROUND AREA
+       ============================== -->
+
+  <!-- Slideshow -->
+  <div id="bgSlideshow" class="bg-slideshow">
+    <img src="3.jpg" class="slideshow-image">
+    <img src="7.jpg" class="slideshow-image">
+    <img src="11.jpg" class="slideshow-image">
+    <img src="13.jpg" class="slideshow-image">
+    <img src="10.jpg" class="slideshow-image">
+    <img src="5.jpg" class="slideshow-image">
+    <img src="2.jpg" class="slideshow-image">
+    <img src="6.jpg" class="slideshow-image">
+    <img src="4.jpg" class="slideshow-image">
+    <img src="1.jpg" class="slideshow-image">
+  </div>
+
+  <!-- Video -->
+  <video id="bgVideo" class="bg-media bg-video" playsinline autoplay muted preload="auto">
+    <source src="Pokemon.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- ==============================
+                BANNER
+       ============================== -->
+  <div class="top-banner">
+
+    <div class="title-row">
+      <img class="logo" id="siteLogo" src="International_Pokémon_logo.png" alt="Logo">
+      <span class="x">X</span>
+      <span class="group">GROUP 3</span>
+    </div>
+
+    <div class="pokemon-row">
+      <img src="gif3.gif">
+      <img src="gif4.gif">
+      <img src="pokemongif.gif">
+      <img src="pokemongif2.gif">
+    </div>
+
+    <div class="banner-buttons">
+      <button class="pixel-btn" id="btnSite1">INTRODUCTION</button>
+      <button class="pixel-btn" id="btnSite2">STORYTELLING</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- ==============================
+              JAVASCRIPT
+     ============================== -->
+<script>
+
+  /* ------------------------------
+      BUTTON LINK
+  ------------------------------ */
+  const SITE_URL_1 = "https://to3-12a2.github.io/member/";
+  const SITE_URL_2 = "https://to3-12a2.github.io/story/";
+
+  document.getElementById("btnSite1").onclick = () => window.location.href = SITE_URL_1;
+  document.getElementById("btnSite2").onclick = () => window.location.href = SITE_URL_2;
+
+  /* ------------------------------
+      BACKGROUND VIDEO + SLIDESHOW
+  ------------------------------ */
+  const SLIDESHOW_DURATION = 5000;
+  let slideshowInterval;
+  let currentSlide = 0;
+
+  const video = document.getElementById('bgVideo');
+  const slideshowContainer = document.getElementById('bgSlideshow');
+  const slides = document.querySelectorAll('.slideshow-image');
+
+  function startSlideshow() {
+      video.pause();
+      video.style.opacity = 0;
+      video.style.visibility = 'hidden';
+
+      slideshowContainer.classList.add('active');
+      showSlide(currentSlide);
+
+      slideshowInterval = setInterval(() => {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+      }, SLIDESHOW_DURATION);
+  }
+
+  function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+  }
+
+  function startVideo() {
+      clearInterval(slideshowInterval);
+      slideshowContainer.classList.remove('active');
+      video.style.opacity = 1;
+      video.style.visibility = 'visible';
+      video.currentTime = 0;
+      video.play();
+  }
+
+  video.addEventListener('ended', startSlideshow);
+  video.addEventListener('error', startSlideshow);
+
+  window.addEventListener('load', ()=>{
+      video.play().then(()=>{
+          video.style.opacity = 1;
+          video.style.visibility = 'visible';
+      }).catch(()=>{
+          startSlideshow();
+      });
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Giới thiệu thành viên</title>
+<style>
+    body {
+        font-family: 'VT323', monospace;
+        background-image: url('AnasAbdin_ Photo.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 40px;
+        margin: 0;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 25px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .column-title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        color: #fff; 
+    }
+
+    .member-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .member {
+        position: relative;
+        background: rgba(0, 0, 0, 0.5); 
+        color: #fff; 
+        padding: 15px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        cursor: pointer;
+        overflow: visible;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        font-size: 25px;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 105%;
+        width: 220px;
+        height: 80px;
+        background: rgba(255,255,255,0.1); 
+        backdrop-filter: blur(5px);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateX(10px) scale(0.9);
+        transition: 0.3s ease;
+        z-index: 999;
+        pointer-events: none;
+        font-size: 20px;
+        text-align: center;
+    }
+        .member:hover .overlay {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+    .gif-row {
+    position: fixed;
+    bottom: 5px;
+    left: -600px; /* bắt đầu ngoài màn hình */
+    display: flex;
+    gap: 5px; /* khoảng cách giữa các GIF */
+    animation: moveRow 9s linear infinite;
+    z-index: 9999;
+    }
+
+    .gif-item {
+    width: 65px; /* chỉnh kích thước GIF nếu cần */
+    }
+
+    @keyframes floatY {
+        0% { transform: translateY(10px) scale(0.95); }
+        50% { transform: translateY(0) scale(1); }
+        100% { transform: translateY(10px) scale(0.95); }
+    }
+
+    @keyframes moveRow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); }
+    }
+
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center; margin-bottom:40px; font-size:45px; color:#fff; text-shadow:3px 3px 6px rgba(0,0,0,0.7);">
+    Danh sách thành viên
+</h1>
+
+<div class="container">
+
+    <!-- Cột 1: Giới thiệu thành viên -->
+    <div>
+        <div class="column-title">TEAM PAGE & UI</div>
+        <div class="member-list">
+            <div class="member">Trần Huyền Linh<div class="overlay">Content Creator</div></div>
+            <div class="member">Ngô Hà Phương<div class="overlay">Content Creator</div></div>
+            <div class="member">Nguyễn Khắc Đạo<div class="overlay">Banner Programmer</div></div>
+            <div class="member">Lê Thị Huyền Linh<div class="overlay">Advertising Images</div></div>
+            <div class="member">Đào Hồng Ánh<div class="overlay">Information Seeker</div></div>
+            <div class="member">Dương Thị Ánh Tuyết<div class="overlay">Information Seeker</div></div>
+        </div>
+    </div>
+
+    <!-- Cột 2: Visual game -->
+    <div>
+        <div class="column-title">STORYTELLING</div>
+        <div class="member-list">
+            <div class="member">Hoàng Thục Anh<div class="overlay">Content Creator</div></div>
+            <div class="member">Nguyễn Thị Hoàng Yến<div class="overlay">Story Programmer</div></div>
+            <div class="member">Nguyễn Hà Anh<div class="overlay">Sound Programmer</div></div>
+        </div>
+    </div>
+
+    <!-- Cột 3: Game -->
+    <div>
+        <div class="column-title">GAMEPLAY LOGIC</div>
+        <div class="member-list">
+            <div class="member">Phạm Hoàng Long<div class="overlay">Content Creator</div></div>
+            <div class="member">Nguyễn Trần Quang Minh<div class="overlay">Content Creator</div></div>
+            <div class="member">Phạm Hoàng Hải Ngọc<div class="overlay">Image Moderator</div></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Thanh GIF chạy ngang -->
+<div class="gif-row">
+    <img src="pokemongif2.gif" class="gif-item">
+    <img src="gif3.gif" class="gif-item">
+    <img src="gif4.gif" class="gif-item">
+    <img src="pokemongif.gif" class="gif-item">
+</div>
+</body>
+</html>
+
